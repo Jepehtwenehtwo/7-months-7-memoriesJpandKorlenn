@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>7 Months, 7 Memories ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Sacramento&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   ROOT & RESETS
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --pink:      #F2A7BE;
+  --pink-light:#FAD9E6;
+  --pink-deep: #E07BA0;
+  --blue:      #A8C8E8;
+  --blue-light:#D6EAF8;
+  --lavender:  #C4B0D8;
+  --lav-light: #EDE5F5;
+  --cream:     #FFF8F2;
+  --gold:      #D4AF6A;
+  --gold-light:#F0D898;
+  --white:     #FFFFFF;
+  --text-dark: #3D2B3D;
+  --text-mid:  #7A5C7A;
+  --text-soft: #B89CB8;
+  --card-bg:   rgba(255,248,242,0.92);
+  --shadow:    0 8px 40px rgba(180,100,140,0.15);
+  --shadow-sm: 0 4px 20px rgba(180,100,140,0.10);
+  --radius:    20px;
+  --radius-sm: 12px;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   SCREEN MANAGEMENT
+   ============================================================ */
+.screen {
+  display: none;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  animation: fadeIn 0.7s ease both;
+}
+.screen.active { display: flex; flex-direction: column; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* ============================================================
+   GRADIENT BACKGROUNDS
+   ============================================================ */
+.bg-romantic {
+  background: linear-gradient(135deg,
+    #FDE8F0 0%,
+    #EDE5F5 25%,
+    #D6EAF8 55%,
+    #FAD9E6 80%,
+    #FDE8F0 100%);
+  background-size: 400% 400%;
+  animation: gradShift 12s ease infinite;
+}
+@keyframes gradShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================================================
+   FLOATING HEARTS
+   ============================================================ */
+.hearts-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.fheart {
+  position: absolute;
+  bottom: -60px;
+  font-size: 1.2rem;
+  opacity: 0;
+  animation: floatUp linear infinite;
+  pointer-events: none;
+  user-select: none;
+}
+@keyframes floatUp {
+  0%   { opacity: 0; transform: translateY(0) scale(0.6) rotate(-10deg); }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.3; }
+  100% { opacity: 0; transform: translateY(-110vh) scale(1.1) rotate(10deg); }
+}
+
+/* ============================================================
+   GLOBAL BUTTON
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.18);
+  opacity: 0;
+  transition: opacity 0.2s;
+  border-radius: inherit;
+}
+.btn:hover::after, .btn:active::after { opacity: 1; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(180,100,140,0.28); }
+.btn:active { transform: translateY(0); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--pink-deep) 0%, var(--lavender) 100%);
+  color: white;
+  box-shadow: 0 4px 18px rgba(224,123,160,0.35);
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  color: var(--text-dark);
+  box-shadow: 0 4px 18px rgba(212,175,106,0.35);
+}
+.btn-soft {
+  background: rgba(255,255,255,0.75);
+  color: var(--text-mid);
+  border: 1.5px solid rgba(196,176,216,0.5);
+  backdrop-filter: blur(8px);
+}
+
+/* ============================================================
+   LANDING PAGE
+   ============================================================ */
+#landing {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 24px 60px;
+}
+.landing-inner { position: relative; z-index: 1; max-width: 420px; margin: 0 auto; }
+.landing-deco {
+  font-size: 2.6rem;
+  margin-bottom: 8px;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+.landing-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 8vw, 3.2rem);
+  font-weight: 400;
+  color: var(--text-dark);
+  line-height: 1.15;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+.landing-title span { color: var(--pink-deep); font-style: italic; }
+.landing-sub {
+  font-family: 'Sacramento', cursive;
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
+  color: var(--text-mid);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.landing-date {
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.landing-date::before, .landing-date::after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+.landing-flowers {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  opacity: 0.7;
+}
+
+/* ============================================================
+   HEADER BAR (memory pages)
+   ============================================================ */
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(14px);
+  background: rgba(255,248,242,0.88);
+  border-bottom: 1px solid rgba(196,176,216,0.25);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.header-title {
+  font-family: 'Sacramento', cursive;
+  font-size: 1.2rem;
+  color: var(--text-mid);
+}
+.header-stats {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.stat-pill {
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(196,176,216,0.4);
+  border-radius: 30px;
+  padding: 4px 12px;
+  font-size: 0.72rem;
+  color: var(--text-mid);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.stat-pill .num { color: var(--pink-deep); font-weight: 700; }
+
+/* ============================================================
+   MEMORIES GRID PAGE
+   ============================================================ */
+#memories-page {
+  padding-bottom: 60px;
+}
+.memories-hero {
+  text-align: center;
+  padding: 36px 24px 24px;
+  position: relative;
+  z-index: 1;
+}
+.memories-hero h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 6vw, 2.4rem);
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+.memories-hero p {
+  font-family: 'Sacramento', cursive;
+  font-size: 1.1rem;
+  color: var(--text-mid);
+}
+.progress-bar-wrap {
+  margin: 0 24px 28px;
+  background: rgba(196,176,216,0.2);
+  border-radius: 50px;
+  height: 7px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--pink-deep), var(--lavender));
+  border-radius: 50px;
+  transition: width 0.6s cubic-bezier(.34,1.56,.64,1);
+  width: 0%;
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding: 0 16px;
+  position: relative;
+  z-index: 1;
+}
+@media(min-width: 500px) {
+  .cards-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media(min-width: 760px) {
+  .cards-grid { grid-template-columns: repeat(4, 1fr); max-width: 800px; margin: 0 auto; }
+}
+.memory-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  border: 1.5px solid rgba(196,176,216,0.3);
+  box-shadow: var(--shadow-sm);
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(.34,1.56,.64,1);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.memory-card:hover, .memory-card:active {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: var(--shadow);
+  border-color: var(--pink);
+}
+.memory-card.locked {
+  cursor: default;
+  opacity: 0.72;
+  filter: saturate(0.4);
+}
+.memory-card.locked:hover, .memory-card.locked:active {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+.memory-card.opened { border-color: var(--gold); }
+.memory-card.opened::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 70%, rgba(212,175,106,0.12) 100%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+.card-month-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+.card-icon { font-size: 1.8rem; }
+.card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  line-height: 1.3;
+}
+.card-lock { font-size: 1rem; }
+.card-status {
+  font-size: 0.68rem;
+  color: var(--text-soft);
+  font-weight: 500;
+}
+.card-status.done { color: var(--gold); }
+
+/* ============================================================
+   MEMORY DETAIL PAGE
+   ============================================================ */
+#memory-detail {
+  padding-bottom: 60px;
+}
+.detail-inner {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+  position: relative;
+  z-index: 1;
+}
+.detail-month-label {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  padding: 28px 0 8px;
+}
+.detail-title {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 5.5vw, 2.2rem);
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+.detail-photo-wrap {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 12px 50px rgba(180,100,140,0.22);
+  margin-bottom: 18px;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, var(--pink-light), var(--lav-light), var(--blue-light));
+}
+.detail-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.detail-photo-wrap:hover img { transform: scale(1.03); }
+.photo-placeholder-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--text-mid);
+  font-size: 0.82rem;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.photo-placeholder-label .ph-icon { font-size: 2.4rem; }
+.detail-caption {
+  text-align: center;
+  font-family: 'Sacramento', cursive;
+  font-size: 1.15rem;
+  color: var(--text-mid);
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+.detail-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Hidden heart */
+.hidden-heart {
+  position: absolute;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  user-select: none;
+  filter: drop-shadow(0 0 0 transparent);
+  opacity: 0.25;
+}
+.hidden-heart:hover { opacity: 0.85; transform: scale(1.2); }
+.hidden-heart.collected {
+  opacity: 1;
+  animation: heartPop 0.5s cubic-bezier(.34,1.56,.64,1) both;
+  filter: drop-shadow(0 0 8px var(--pink-deep));
+  cursor: default;
+  pointer-events: none;
+}
+@keyframes heartPop {
+  0% { transform: scale(0.5); }
+  60% { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+.heart-collect-toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  background: rgba(255,255,255,0.92);
+  border: 1.5px solid var(--pink);
+  border-radius: 50px;
+  padding: 10px 22px;
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  box-shadow: 0 6px 24px rgba(180,100,140,0.2);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  opacity: 0;
+  transition: all 0.4s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.heart-collect-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-8px);
+}
+
+/* ============================================================
+   MONTH 7 SPECIAL — LETTER
+   ============================================================ */
+#month7-screen {
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px 60px;
+}
+.m7-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20,10,20,0.72);
+  z-index: 0;
+  animation: fadeIn 1.5s ease both;
+}
+.letter-card {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  width: 100%;
+  background: rgba(255,250,248,0.97);
+  border-radius: 24px;
+  box-shadow: 0 20px 80px rgba(180,100,140,0.4);
+  padding: 44px 36px 40px;
+  text-align: center;
+  border: 1.5px solid rgba(212,175,106,0.3);
+  animation: letterUnfold 1.2s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes letterUnfold {
+  0% { opacity: 0; transform: scaleY(0.2) scaleX(0.8); }
+  60% { opacity: 1; transform: scaleY(1.05) scaleX(1.02); }
+  100% { transform: scaleY(1) scaleX(1); }
+}
+.letter-deco { font-size: 2rem; margin-bottom: 12px; }
+.letter-text {
+  font-family: 'Sacramento', cursive;
+  font-size: clamp(1.15rem, 4.5vw, 1.45rem);
+  color: var(--text-dark);
+  line-height: 1.9;
+  margin-bottom: 24px;
+}
+.letter-text strong {
+  font-family: 'Sacramento', cursive;
+  font-size: clamp(1.3rem, 5vw, 1.65rem);
+  color: var(--pink-deep);
+}
+.letter-sig {
+  font-family: 'Sacramento', cursive;
+  font-size: clamp(1.05rem, 4vw, 1.3rem);
+  color: var(--text-mid);
+  margin-bottom: 28px;
+}
+.letter-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 24px;
+}
+
+/* ============================================================
+   SECRET BONUS CARD
+   ============================================================ */
+#secret-screen {
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px 60px;
+}
+.secret-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+}
+.secret-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: var(--text-dark);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 5px 16px;
+  border-radius: 30px;
+  margin-bottom: 16px;
+  box-shadow: 0 3px 12px rgba(212,175,106,0.4);
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { box-shadow: 0 3px 12px rgba(212,175,106,0.4); }
+  50% { box-shadow: 0 3px 28px rgba(212,175,106,0.7); }
+}
+.secret-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 8vw, 3.2rem);
+  font-weight: 300;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  font-style: italic;
+}
+.secret-sub {
+  font-family: 'Sacramento', cursive;
+  font-size: 1.2rem;
+  color: var(--text-mid);
+  margin-bottom: 28px;
+}
+.secret-photo-wrap {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 16px 60px rgba(180,100,140,0.28);
+  margin-bottom: 22px;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, #FAD9E6, #EDE5F5, #D6EAF8);
+  position: relative;
+}
+.secret-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============================================================
+   CELEBRATION PAGE
+   ============================================================ */
+#celebration-screen {
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px 60px;
+  text-align: center;
+  overflow: hidden;
+}
+.celeb-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 460px;
+}
+.celeb-icon { font-size: 3rem; margin-bottom: 16px; animation: pulse 1.8s ease-in-out infinite; }
+.celeb-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 7vw, 2.8rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.celeb-msg {
+  font-family: 'Sacramento', cursive;
+  font-size: clamp(1.1rem, 4.5vw, 1.45rem);
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin-bottom: 36px;
+}
+/* Confetti */
+.confetti-piece {
+  position: fixed;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  top: -20px;
+  animation: confettiFall linear infinite;
+  z-index: 1;
+}
+@keyframes confettiFall {
+  0% { top: -20px; opacity: 1; transform: rotate(0deg) translateX(0); }
+  100% { top: 110vh; opacity: 0; transform: rotate(600deg) translateX(var(--drift)); }
+}
+/* Firework */
+.firework {
+  position: fixed;
+  pointer-events: none;
+  z-index: 3;
+}
+.fw-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: fwBurst 1.2s ease-out both;
+}
+@keyframes fwBurst {
+  0% { transform: translate(0,0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--fx), var(--fy)) scale(0.2); opacity: 0; }
+}
+
+/* ============================================================
+   BACK BUTTON
+   ============================================================ */
+.back-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  padding: 4px 6px;
+  color: var(--text-mid);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.back-btn:hover { transform: translateX(-2px); }
+
+/* ============================================================
+   MISC UTILITIES
+   ============================================================ */
+.gold-line {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 20px;
+}
+.section-fill { flex: 1; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     FLOATING HEARTS (global)
+     ============================================================ -->
+<div class="hearts-container" id="heartsContainer"></div>
+
+<!-- Heart collect toast -->
+<div class="heart-collect-toast" id="heartToast">💖 Hidden heart found!</div>
+
+<!-- ============================================================
+     SCREEN 1: LANDING PAGE
+     ============================================================ -->
+<div class="screen active bg-romantic" id="landing">
+  <div class="landing-inner">
+    <div class="landing-deco">🌸</div>
+    <h1 class="landing-title">7 Months,<br><span>7 Memories</span> ❤️</h1>
+    <p class="landing-sub">"A small journey through our story, Mahal ko."</p>
+    <div class="landing-date">November 26, 2025 — Always.</div>
+    <div class="landing-flowers">🌷 🌸 💕 🌸 🌷</div>
+    <button class="btn btn-primary" onclick="goToMemories()">
+      Start Our Journey ✨
+    </button>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN 2: MEMORIES GRID
+     ============================================================ -->
+<div class="screen bg-romantic" id="memories-page">
+  <div class="page-header">
+    <span class="header-title">7 Months, 7 Memories</span>
+    <div class="header-stats">
+      <div class="stat-pill">Opened: <span class="num" id="openCount">0</span>/7</div>
+      <div class="stat-pill">💖 <span class="num" id="heartCountHeader">0</span>/7</div>
+    </div>
+  </div>
+
+  <div class="memories-hero">
+    <h2>Our Story, Month by Month</h2>
+    <p>Tap a memory to relive our journey ✨</p>
+  </div>
+
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="progressFill"></div>
+  </div>
+
+  <div class="cards-grid" id="cardsGrid">
+    <!-- Cards generated by JS -->
+  </div>
+
+  <div style="height:30px;"></div>
+</div>
+
+<!-- ============================================================
+     SCREEN 3: MEMORY DETAIL
+     ============================================================ -->
+<div class="screen bg-romantic" id="memory-detail">
+  <div class="page-header">
+    <button class="back-btn" onclick="goBack()" aria-label="Back">←</button>
+    <span class="header-title" id="detailHeaderTitle">Memory</span>
+    <div class="header-stats">
+      <div class="stat-pill">💖 <span class="num" id="heartCountDetail">0</span>/7</div>
+    </div>
+  </div>
+
+  <div class="detail-inner" id="detailInner">
+    <!-- Content injected by JS -->
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN 4: MONTH 7 LETTER
+     ============================================================ -->
+<div class="screen bg-romantic" id="month7-screen">
+  <div class="m7-overlay"></div>
+  <!-- Floating hearts already in global container -->
+  <div class="letter-card" id="letterCard">
+    <div class="letter-deco">💌</div>
+    <div class="letter-text">
+      <strong>Dear Korlenn,</strong><br><br>
+      Happy 7th Monthsary, Mahal ko.<br>
+      Thank you for being part of my life,<br>
+      my happiest memories,<br>
+      and the future I continue<br>
+      to look forward to.
+    </div>
+    <div class="letter-divider"></div>
+    <div class="letter-sig">
+      With all my love,<br>
+      <strong style="font-size:1.5em;color:var(--pink-deep);">JP</strong>
+    </div>
+    <button class="btn btn-primary" onclick="goCelebration()">
+      Celebrate Us ❤️
+    </button>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN 5: SECRET BONUS
+     ============================================================ -->
+<div class="screen bg-romantic" id="secret-screen">
+  <div class="page-header">
+    <button class="back-btn" onclick="showScreen('memories-page')" aria-label="Back">←</button>
+    <span class="header-title">✨ Secret Unlocked</span>
+    <div class="header-stats">
+      <div class="stat-pill">💖 <span class="num">7</span>/7</div>
+    </div>
+  </div>
+  <div class="secret-inner" style="z-index:1;position:relative;">
+    <div class="secret-badge">✨ All Hearts Found ✨</div>
+    <h2 class="secret-title">Looking Back</h2>
+    <p class="secret-sub">You found every hidden heart, Mahal.</p>
+
+    <div class="secret-photo-wrap">
+      <!-- =====================================================
+           REPLACE SECRET IMAGE HERE
+           Replace "images/secret-memory.jpg" with your image path
+           ===================================================== -->
+      <img src="images/secret-memory.jpg"
+           alt="Our Secret Memory"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+           id="secretImg" />
+      <div class="photo-placeholder-label" style="display:none;">
+        <div class="ph-icon">📷</div>
+        <div>secret-memory.jpg</div>
+        <div style="font-size:0.72rem;opacity:0.6;">Replace path in HTML</div>
+      </div>
+    </div>
+
+    <div class="detail-caption">"Every moment led me closer to you."</div>
+    <button class="btn btn-gold" onclick="goToMemories()">
+      Open Our Final Memory ✨
+    </button>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN 6: CELEBRATION
+     ============================================================ -->
+<div class="screen bg-romantic" id="celebration-screen">
+  <div class="celeb-inner">
+    <div class="celeb-icon">🎉</div>
+    <h2 class="celeb-title">7 Months of Us ❤️</h2>
+    <p class="celeb-msg">
+      "Thank you for being part of these<br>
+      7 wonderful months, Mahal ko.<br>
+      Here's to all the memories<br>
+      we still have yet to make. ❤️"
+    </p>
+    <button class="btn btn-primary" onclick="replayJourney()">
+      Replay Our Journey 🌸
+    </button>
+  </div>
+</div>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* ---- STATE ---- */
+const state = {
+  openedMemories: new Set(),   // indices 0-6
+  collectedHearts: new Set(),  // indices 0-6
+  currentMemory: -1,
+};
+
+/* ---- MEMORY DATA ---- */
+const MEMORIES = [
+  {
+    month: 1,
+    title: "The Month of My Confession",
+    emoji: "💌",
+    img: "month1.jpg",
+    comment: "image-month-1.jpg",
+  },
+  {
+    month: 2,
+    title: "Our First Monthsary",
+    emoji: "🌷",
+    img: "month2.jpg",
+    comment: "image-month-2.jpg",
+  },
+  {
+    month: 3,
+    title: "First Monthsary Together",
+    emoji: "🥂",
+    img: "month3.jpg",
+    comment: "image-month-3.jpg",
+  },
+  {
+    month: 4,
+    title: "Special February Photobooth",
+    emoji: "📸",
+    img: "month4.jpg",
+    comment: "image-month-4.jpg",
+  },
+  {
+    month: 5,
+    title: "Roblox Photobooth Muna",
+    emoji: "🎮",
+    img: "month5.jpg",
+    comment: "image-month-5.jpg",
+  },
+  {
+    month: 6,
+    title: "Our Lovely Photo Together",
+    emoji: "🫶",
+    img: "month6.jpg",
+    comment: "image-month-6.jpg",
+  },
+  {
+    month: 7,
+    title: "Our Heart to Heart Day",
+    emoji: "💞",
+    img: "month7.jpg",
+    comment: "image-month-7.jpg",
+  },
+];
+
+/* ---- HEART POSITIONS (x%, y% within the photo area) ---- */
+const HEART_POSITIONS = [
+  { right: '14%', top: '22%' },
+  { left: '8%',  top: '55%' },
+  { right: '10%', bottom: '28%' },
+  { left: '12%', top: '18%' },
+  { right: '6%', top: '45%' },
+  { left: '16%', bottom: '20%' },
+  { right: '18%', bottom: '15%' },
+];
+
+/* ---- SCREEN HELPERS ---- */
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById(id);
+  el.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function goToMemories() {
+  buildCardsGrid();
+  showScreen('memories-page');
+  updateProgressBar();
+  syncHeaderCounts();
+}
+
+function goBack() {
+  showScreen('memories-page');
+  buildCardsGrid();
+  syncHeaderCounts();
+}
+
+/* ---- BUILD CARDS ---- */
+function buildCardsGrid() {
+  const grid = document.getElementById('cardsGrid');
+  grid.innerHTML = '';
+  MEMORIES.forEach((m, i) => {
+    const unlocked = i === 0 || state.openedMemories.has(i - 1);
+    const opened = state.openedMemories.has(i);
+
+    const card = document.createElement('div');
+    card.className = 'memory-card' + (unlocked ? '' : ' locked') + (opened ? ' opened' : '');
+    card.innerHTML = `
+      <div class="card-month-num">Month ${m.month}</div>
+      <div class="card-icon">${unlocked ? m.emoji : '🔒'}</div>
+      <div class="card-title">${m.title}</div>
+      <div class="card-status ${opened ? 'done' : ''}">${opened ? '✔ Viewed' : unlocked ? 'Tap to open' : 'Locked'}</div>
+    `;
+    if (unlocked) {
+      card.addEventListener('click', () => openMemory(i));
+    }
+    grid.appendChild(card);
+  });
+
+  /* Secret bonus card */
+  if (state.collectedHearts.size === 7) {
+    const bonus = document.createElement('div');
+    bonus.className = 'memory-card opened';
+    bonus.style.borderColor = 'var(--gold)';
+    bonus.style.background = 'linear-gradient(135deg,rgba(255,248,242,0.95),rgba(240,216,152,0.18))';
+    bonus.innerHTML = `
+      <div class="card-month-num">✨ Bonus</div>
+      <div class="card-icon">🌟</div>
+      <div class="card-title">Looking Back</div>
+      <div class="card-status done">All Hearts Found</div>
+    `;
+    bonus.addEventListener('click', () => showScreen('secret-screen'));
+    grid.appendChild(bonus);
+  }
+}
+
+/* ---- OPEN MEMORY ---- */
+function openMemory(index) {
+  state.currentMemory = index;
+  const m = MEMORIES[index];
+
+  // Mark opened
+  state.openedMemories.add(index);
+
+  const detail = document.getElementById('detailInner');
+  document.getElementById('detailHeaderTitle').textContent = `Month ${m.month}`;
+  document.getElementById('heartCountDetail').textContent = state.collectedHearts.size;
+
+  const heartPos = HEART_POSITIONS[index] || { right: '12%', top: '20%' };
+  const posStyle = Object.entries(heartPos).map(([k, v]) => `${k}:${v}`).join(';');
+  const collected = state.collectedHearts.has(index);
+
+  detail.innerHTML = `
+    <div class="detail-month-label">Month ${m.month} of 7</div>
+    <h2 class="detail-title">${m.title}</h2>
+
+    <!-- =====================================================
+         REPLACE IMAGE FOR MONTH ${m.month} HERE
+         Change the src attribute below to your photo path
+         e.g. src="images/${m.comment}"
+         ===================================================== -->
+    <div class="detail-photo-wrap" style="position:relative;">
+      <img src="${m.img}"
+           alt="${m.title}"
+           onerror="this.style.display='none';document.getElementById('ph${index}').style.display='flex';" />
+      <div class="photo-placeholder-label" id="ph${index}" style="display:none;">
+        <div class="ph-icon">📷</div>
+        <div>${m.comment}</div>
+        <div style="font-size:0.72rem;opacity:0.6;">Replace src in HTML</div>
+      </div>
+
+      <!-- Hidden heart for month ${m.month} -->
+      <div
+        class="hidden-heart ${collected ? 'collected' : ''}"
+        id="hiddenHeart${index}"
+        style="${posStyle}"
+        title="${collected ? 'Heart collected! 💖' : 'Find me...'}"
+        onclick="collectHeart(${index})"
+      >💗</div>
+    </div>
+
+    <p class="detail-caption">"A memory I'll always keep close to my heart."</p>
+
+    <div class="detail-actions">
+      ${index < 6
+        ? `<button class="btn btn-primary" onclick="continueJourney(${index})">Continue Our Journey ✨</button>`
+        : `<button class="btn btn-primary" onclick="openMonth7Letter()">Open Our Letter 💌</button>`
+      }
+    </div>
+  `;
+
+  showScreen('memory-detail');
+  syncHeaderCounts();
+  updateProgressBar();
+}
+
+/* ---- COLLECT HEART ---- */
+function collectHeart(index) {
+  if (state.collectedHearts.has(index)) return;
+  state.collectedHearts.add(index);
+
+  // Animate
+  const hEl = document.getElementById('hiddenHeart' + index);
+  if (hEl) hEl.classList.add('collected');
+
+  // Update counts
+  document.getElementById('heartCountDetail').textContent = state.collectedHearts.size;
+  document.getElementById('heartCountHeader').textContent = state.collectedHearts.size;
+
+  // Toast
+  const toast = document.getElementById('heartToast');
+  toast.textContent = `💖 Heart ${state.collectedHearts.size}/7 found!`;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+
+  // If all 7 hearts collected, trigger a small particle burst
+  if (state.collectedHearts.size === 7) {
+    setTimeout(() => {
+      const toast2 = document.getElementById('heartToast');
+      toast2.textContent = '🌟 All hearts found! A secret is unlocked!';
+      toast2.classList.add('show');
+      setTimeout(() => toast2.classList.remove('show'), 3500);
+    }, 2800);
+  }
+}
+
+/* ---- CONTINUE JOURNEY ---- */
+function continueJourney(currentIndex) {
+  const next = currentIndex + 1;
+  if (next <= 6) {
+    openMemory(next);
+  }
+}
+
+/* ---- MONTH 7 LETTER ---- */
+function openMonth7Letter() {
+  showScreen('month7-screen');
+  spawnHeartsForLetter();
+}
+
+function spawnHeartsForLetter() {
+  // Extra hearts for this screen
+  const container = document.getElementById('heartsContainer');
+  for (let i = 0; i < 6; i++) {
+    const h = document.createElement('div');
+    h.className = 'fheart';
+    h.textContent = ['❤️','💕','💖','💗','💓','🌸'][i];
+    h.style.left = (10 + i * 15) + '%';
+    h.style.animationDuration = (4 + Math.random() * 4) + 's';
+    h.style.animationDelay = (i * 0.6) + 's';
+    h.style.fontSize = (1 + Math.random()) + 'rem';
+    container.appendChild(h);
+    setTimeout(() => h.remove(), 10000);
+  }
+}
+
+/* ---- CELEBRATION ---- */
+function goCelebration() {
+  showScreen('celebration-screen');
+  spawnConfetti();
+  spawnFireworks();
+}
+
+function spawnConfetti() {
+  const colors = ['#F2A7BE','#C4B0D8','#A8C8E8','#D4AF6A','#FAD9E6','#D6EAF8','#FDE8F0'];
+  for (let i = 0; i < 55; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti-piece';
+    c.style.background = colors[Math.floor(Math.random() * colors.length)];
+    c.style.left = Math.random() * 100 + 'vw';
+    c.style.animationDuration = (3 + Math.random() * 4) + 's';
+    c.style.animationDelay = Math.random() * 3 + 's';
+    c.style.setProperty('--drift', (Math.random() * 120 - 60) + 'px');
+    c.style.opacity = 0.8 + Math.random() * 0.2;
+    c.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+    document.getElementById('celebration-screen').appendChild(c);
+  }
+}
+
+function spawnFireworks() {
+  const colors = ['#F2A7BE','#C4B0D8','#D4AF6A','#A8C8E8','#FF8FAB','#FFD6E0'];
+  function burst(x, y) {
+    const fw = document.createElement('div');
+    fw.className = 'firework';
+    fw.style.left = x + 'px';
+    fw.style.top = y + 'px';
+    for (let i = 0; i < 10; i++) {
+      const p = document.createElement('div');
+      p.className = 'fw-particle';
+      const angle = (i / 10) * 2 * Math.PI;
+      const dist = 50 + Math.random() * 60;
+      p.style.background = colors[Math.floor(Math.random() * colors.length)];
+      p.style.setProperty('--fx', Math.cos(angle) * dist + 'px');
+      p.style.setProperty('--fy', Math.sin(angle) * dist + 'px');
+      p.style.animationDelay = Math.random() * 0.3 + 's';
+      fw.appendChild(p);
+    }
+    document.getElementById('celebration-screen').appendChild(fw);
+    setTimeout(() => fw.remove(), 2000);
+  }
+
+  const positions = [[30,30],[70,25],[50,60],[20,70],[80,55],[60,20],[40,80]];
+  positions.forEach(([xp, yp], i) => {
+    setTimeout(() => {
+      burst(
+        (xp / 100) * window.innerWidth,
+        (yp / 100) * window.innerHeight
+      );
+    }, i * 500);
+  });
+}
+
+/* ---- REPLAY ---- */
+function replayJourney() {
+  // Reset state
+  state.openedMemories.clear();
+  state.collectedHearts.clear();
+  state.currentMemory = -1;
+  document.getElementById('openCount').textContent = '0';
+  document.getElementById('heartCountHeader').textContent = '0';
+  // Clear confetti
+  document.querySelectorAll('.confetti-piece').forEach(e => e.remove());
+  document.querySelectorAll('.firework').forEach(e => e.remove());
+  showScreen('landing');
+}
+
+/* ---- PROGRESS BAR ---- */
+function updateProgressBar() {
+  const pct = (state.openedMemories.size / 7) * 100;
+  const fill = document.getElementById('progressFill');
+  if (fill) fill.style.width = pct + '%';
+  document.getElementById('openCount').textContent = state.openedMemories.size;
+}
+
+function syncHeaderCounts() {
+  document.getElementById('heartCountHeader').textContent = state.collectedHearts.size;
+  const hd = document.getElementById('heartCountDetail');
+  if (hd) hd.textContent = state.collectedHearts.size;
+}
+
+/* ---- FLOATING HEARTS (ambient) ---- */
+function initFloatingHearts() {
+  const container = document.getElementById('heartsContainer');
+  const symbols = ['❤️','💕','💖','💗','💓','🩷','🫶','🌸'];
+  function addHeart() {
+    const h = document.createElement('div');
+    h.className = 'fheart';
+    h.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    h.style.left = Math.random() * 100 + '%';
+    const dur = 7 + Math.random() * 8;
+    h.style.animationDuration = dur + 's';
+    h.style.animationDelay = '0s';
+    h.style.fontSize = (0.8 + Math.random() * 0.9) + 'rem';
+    container.appendChild(h);
+    setTimeout(() => h.remove(), dur * 1000 + 500);
+  }
+  // Initial burst
+  for (let i = 0; i < 8; i++) {
+    setTimeout(addHeart, i * 600);
+  }
+  setInterval(addHeart, 1800);
+}
+
+/* ---- INIT ---- */
+initFloatingHearts();
+
+/* Pre-show secret img error handler */
+document.getElementById('secretImg') && document.getElementById('secretImg').addEventListener('error', function() {
+  this.style.display = 'none';
+  const ph = this.nextElementSibling;
+  if (ph) ph.style.display = 'flex';
+});
+</script>
+</body>
+</html>
